@@ -102,3 +102,4 @@
 /home/han/OldPhonePad/OldPhonePadConverter.Tests/obj/Debug/net8.0/OldPhonePadConverter.Tests.pdb
 /home/han/OldPhonePad/OldPhonePadConverter.Tests/obj/Debug/net8.0/OldPhonePadConverter.Tests.genruntimeconfig.cache
 /home/han/OldPhonePad/OldPhonePadConverter.Tests/obj/Debug/net8.0/ref/OldPhonePadConverter.Tests.dll
+/home/han/OldPhonePad/OldPhonePadConverter.Tests/obj/Debug/net8.0/OldPhonePadConverter.Tests.sourcelink.json

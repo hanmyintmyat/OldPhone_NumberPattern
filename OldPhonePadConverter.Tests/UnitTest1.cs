@@ -1,8 +1,3 @@
-using Xunit;
-
-using Xunit;
-using OldPhonePadConverter;  // your main project's namespace
-
 namespace OldPhonePadConverter.Tests
 {
     public class OldPhonePadTests

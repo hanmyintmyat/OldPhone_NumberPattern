@@ -12,3 +12,4 @@
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.pdb
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.genruntimeconfig.cache
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/ref/OldPhonePadConverter.dll
+/home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.sourcelink.json
