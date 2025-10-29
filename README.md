@@ -40,4 +40,7 @@ A C# console application that simulates typing on an old mobile‑phone keypad. 
 1. Open a terminal and navigate to the project directory.
 2. Run the project:
    ```bash
+cd OldPhonePadDemo
+dotnet run
+
    dotnet run
