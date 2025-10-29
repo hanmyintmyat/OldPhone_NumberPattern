@@ -4,10 +4,7 @@ using System.Text;
 
 namespace OldPhonePadConverter
 {
-    /// <summary>
-    /// Converts old-style phone keypad inputs (multi-tap) to readable text.
-    /// Example: "4433555 555666096667775553#" → "HELLO WORLD"
-    /// </summary>
+
     public class OldPhoneConverter
     {
         // Mapping of keypad digits to letters
@@ -24,12 +21,7 @@ namespace OldPhonePadConverter
             ['0'] = " " // space
         };
 
-        /// <summary>
-        /// Converts an input sequence into a readable string.
-        /// </summary>
-        /// <param name="input">Keypad input string ending with '#'</param>
-        /// <returns>ConversionResult containing the converted text and any warnings.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when input is null.</exception>
+        
         public ConversionResult Convert(string input)
         {
             if (input == null)
@@ -121,9 +113,7 @@ namespace OldPhonePadConverter
         }
     }
 
-    /// <summary>
-    /// Holds the conversion output text and any warnings.
-    /// </summary>
+  
     public class ConversionResult
     {
         public string Text { get; set; } = string.Empty;
