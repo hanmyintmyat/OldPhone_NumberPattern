@@ -1,15 +1,12 @@
-/home/han/OldPhonePad/OldPhonePadConverter/bin/Debug/net8.0/OldPhonePadConverter
 /home/han/OldPhonePad/OldPhonePadConverter/bin/Debug/net8.0/OldPhonePadConverter.deps.json
-/home/han/OldPhonePad/OldPhonePadConverter/bin/Debug/net8.0/OldPhonePadConverter.runtimeconfig.json
 /home/han/OldPhonePad/OldPhonePadConverter/bin/Debug/net8.0/OldPhonePadConverter.dll
 /home/han/OldPhonePad/OldPhonePadConverter/bin/Debug/net8.0/OldPhonePadConverter.pdb
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.GeneratedMSBuildEditorConfig.editorconfig
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.AssemblyInfoInputs.cache
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.AssemblyInfo.cs
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.csproj.CoreCompileInputs.cache
+/home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.sourcelink.json
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.dll
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/refint/OldPhonePadConverter.dll
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.pdb
-/home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.genruntimeconfig.cache
 /home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/ref/OldPhonePadConverter.dll
-/home/han/OldPhonePad/OldPhonePadConverter/obj/Debug/net8.0/OldPhonePadConverter.sourcelink.json

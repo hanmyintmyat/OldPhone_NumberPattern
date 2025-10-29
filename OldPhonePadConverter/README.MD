@@ -38,10 +38,3 @@ A C# console application that simulates typing on an old mobile phone keypad. It
 - Input: `222 2 22#`  
   Output: `CAB`
 
-## How to Run (Terminal)
-
-1. Open a terminal and navigate to the project directory.
-2. Build the project:
-
-   ```bash
-   dotnet run

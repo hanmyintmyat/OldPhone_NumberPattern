@@ -1,83 +1,137 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-public class OldPhonePadProgram
+namespace OldPhonePadConverter
 {
-    private static readonly Dictionary<char, string> keyMap = new Dictionary<char, string>()
+    /// <summary>
+    /// Converts old-style phone keypad inputs (multi-tap) to readable text.
+    /// Example: "4433555 555666096667775553#" → "HELLO WORLD"
+    /// </summary>
+    public class OldPhoneConverter
     {
-        { '1', "" },     
-        { '2', "ABC" },
-        { '3', "DEF" },
-        { '4', "GHI" },
-        { '5', "JKL" },
-        { '6', "MNO" },
-        { '7', "PQRS" },
-        { '8', "TUV" },
-        { '9', "WXYZ" },
-        { '0', " " },   
-    };
-
-    public static Dictionary<char, string> KeyMap => keyMap;
-
-    public static string OldPhonePad(string input)
-    {
-        if (string.IsNullOrEmpty(input)) return "";
-
-        StringBuilder result = new StringBuilder();
-        int i = 0;
-
-        while (i < input.Length)
+        // Mapping of keypad digits to letters
+        private static readonly Dictionary<char, string> KeyMap = new()
         {
-            char c = input[i];
+            ['2'] = "ABC",
+            ['3'] = "DEF",
+            ['4'] = "GHI",
+            ['5'] = "JKL",
+            ['6'] = "MNO",
+            ['7'] = "PQRS",
+            ['8'] = "TUV",
+            ['9'] = "WXYZ",
+            ['0'] = " " // space
+        };
 
-            if (c == '#') break; // End of input
+        /// <summary>
+        /// Converts an input sequence into a readable string.
+        /// </summary>
+        /// <param name="input">Keypad input string ending with '#'</param>
+        /// <returns>ConversionResult containing the converted text and any warnings.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when input is null.</exception>
+        public ConversionResult Convert(string input)
+        {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input));
 
-            if (c == '*') // Backspace
+            var result = new ConversionResult();
+            var output = new StringBuilder();
+
+            char? currentKey = null;
+            int pressCount = 0;
+
+            void EmitCurrent()
             {
-                if (result.Length > 0) result.Length--;
-                i++;
-                continue;
+                if (currentKey == null)
+                    return;
+
+                if (KeyMap.TryGetValue(currentKey.Value, out var letters))
+                {
+                    var index = (pressCount - 1) % letters.Length;
+                    output.Append(letters[index]);
+                }
+                else
+                {
+                    result.Warnings.Add($"Ignoring unknown key '{currentKey}'");
+                }
+
+                currentKey = null;
+                pressCount = 0;
             }
 
-            if (c == ' ') // Pause between letters
+            for (int i = 0; i < input.Length; i++)
             {
-                i++;
-                continue;
+                char c = input[i];
+
+                if (c == ' ')
+                {
+                    // Space means "pause" between same key presses
+                    EmitCurrent();
+                    continue;
+                }
+
+                if (c == '*')
+                {
+                    // Backspace behavior
+                    if (output.Length > 0)
+                        output.Length--;
+                    else
+                        result.Warnings.Add("Backspace at beginning ignored.");
+
+                    currentKey = null;
+                    pressCount = 0;
+                    continue;
+                }
+
+                if (c == '#')
+                {
+                    // End of input — finalize and exit
+                    EmitCurrent();
+                    result.Text = output.ToString();
+                    return result;
+                }
+
+                if (KeyMap.ContainsKey(c))
+                {
+                    if (currentKey == null || currentKey == c)
+                    {
+                        currentKey = c;
+                        pressCount++;
+                    }
+                    else
+                    {
+                        EmitCurrent();
+                        currentKey = c;
+                        pressCount = 1;
+                    }
+                }
+                else
+                {
+                    result.Warnings.Add($"Invalid character '{c}' ignored.");
+                }
             }
 
-            int count = 1;
-            while (i + count < input.Length && input[i + count] == c)
-                count++;
+            // If input didn’t end with '#', flush whatever’s left
+            EmitCurrent();
+            result.Warnings.Add("Input did not end with '#'; partial text returned.");
 
-            if (KeyMap.ContainsKey(c) && KeyMap[c].Length > 0)
-            {
-                string letters = KeyMap[c];
-                char letter = letters[(count - 1) % letters.Length];
-                result.Append(letter);
-            }
-            else if (c == '0')
-            {
-                result.Append(' '); // '0' is a space
-            }
-
-            i += count;
+            result.Text = output.ToString();
+            return result;
         }
-
-        return result.ToString();
     }
 
-    static void Main()
+    /// <summary>
+    /// Holds the conversion output text and any warnings.
+    /// </summary>
+    public class ConversionResult
     {
-        Console.WriteLine("=== Old Phone Keypad Converter ===");
-        Console.WriteLine("Type your keypad input using numbers.");
-        Console.WriteLine("Use '*' for backspace, pause with space, and end input with '#'.\n");
-
-        Console.Write("Enter input: ");
-        string input = Console.ReadLine() ?? "";
-
-        string output = OldPhonePad(input);
-        Console.WriteLine("\nTranslated Text: " + output);
+        public string Text { get; set; } = string.Empty;
+        public List<string> Warnings { get; } = new();
     }
 }
+
+
 
 
 
